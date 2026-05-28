@@ -1385,7 +1385,7 @@ function prevFotos(e) {
    INTEGRACIÓN GOOGLE SHEETS — VIRTUS GLOBAL PP8
    Reemplaza la URL_DEL_SCRIPT con tu Web App URL desplegada
 ═══════════════════════════════════════════════════════ */
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtiPkYHLuM06lEF7Xa_3Z8siT8ecuNHEFdbiZPRRZzb9YaOKs7tophADkDDCpIgdSx/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbykcqdIWNq0jor_Y0xbSDvDaO_HmxJBkbEqlmQwxgAcjdtZ-_YVB-tm6L1wSJTvSKLH/exec';
 
 /* ─── RECOLECTOR DE DATOS ─────────────── */
 function recolectarDatos() {
@@ -1529,6 +1529,7 @@ async function enviar() {
   try {
     const resp = await fetch(SCRIPT_URL, {
       method:   'POST',
+      mode:     'no-cors',
       redirect: 'follow',
       body:     new URLSearchParams({ payload: JSON.stringify(data) }),
     });
