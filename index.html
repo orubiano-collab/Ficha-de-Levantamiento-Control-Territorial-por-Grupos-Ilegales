@@ -1,0 +1,1593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ficha de Levantamiento · Grupos Ilegales con Control Territorial · Barranquilla 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,800;1,9..144,300&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════
+   TOKENS
+═══════════════════════════ */
+:root {
+  --bg:       #0b0d12;
+  --surface:  #111419;
+  --card:     #151820;
+  --card2:    #1a1e27;
+  --accent:   #e63946;      /* rojo alerta */
+  --acc2:     #ff6b74;
+  --acc-bg:   rgba(230,57,70,.09);
+  --acc-brd:  rgba(230,57,70,.28);
+  --gold:     #f4a800;
+  --gold2:    #ffd166;
+  --gold-bg:  rgba(244,168,0,.09);
+  --gold-brd: rgba(244,168,0,.28);
+  --steel:    #4361ee;
+  --stl-bg:   rgba(67,97,238,.1);
+  --stl-brd:  rgba(67,97,238,.28);
+  --teal:     #06d6a0;
+  --teal-bg:  rgba(6,214,160,.08);
+  --teal-brd: rgba(6,214,160,.25);
+  --border:   rgba(255,255,255,.07);
+  --brd2:     rgba(255,255,255,.04);
+  --ink:      rgba(255,255,255,.88);
+  --ink2:     rgba(255,255,255,.55);
+  --ink3:     rgba(255,255,255,.3);
+  --r: 10px; --r2: 16px; --r3: 24px;
+  --sh: 0 4px 32px rgba(0,0,0,.55);
+  --font-d: 'Fraunces', Georgia, serif;
+  --font-b: 'Space Grotesk', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--bg);
+  color: var(--ink);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.65;
+  /* Ruido de fondo sutil */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* ══ STRIPE ANIMADO ══ */
+.stripe {
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--gold), var(--steel), var(--teal), var(--accent));
+  background-size: 400% 100%;
+  animation: stripeAnim 6s linear infinite;
+}
+@keyframes stripeAnim { 0% { background-position: 0% } 100% { background-position: 400% } }
+
+/* ══ TOPBAR ══ */
+.topbar {
+  position: sticky; top: 3px; z-index: 200;
+  background: rgba(11,13,18,.97); backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+  padding: 11px 32px;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+}
+.tb-brand { display: flex; align-items: center; gap: 12px; }
+.tb-seal {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #b22234);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1em; flex-shrink: 0;
+  box-shadow: 0 0 16px rgba(230,57,70,.35);
+}
+.tb-name { font-family: var(--font-d); font-size: .88em; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.tb-name span { display: block; font-family: var(--font-b); font-weight: 400; font-size: .82em; color: var(--ink3); }
+.tb-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+.pill {
+  padding: 4px 11px; border-radius: 20px; font-size: .68em; font-weight: 600;
+  letter-spacing: .04em; border: 1px solid;
+}
+.pill-red  { background: var(--acc-bg); border-color: var(--acc-brd); color: var(--acc2); }
+.pill-gold { background: var(--gold-bg); border-color: var(--gold-brd); color: var(--gold2); }
+.pill-stl  { background: var(--stl-bg); border-color: var(--stl-brd); color: #93a8f5; }
+
+/* ══ HERO ══ */
+.hero {
+  background: linear-gradient(160deg, #0e1118 0%, #130a0a 55%, #0b0d12 100%);
+  padding: 56px 32px 80px;
+  position: relative; overflow: hidden;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+  height: 32px; background: var(--bg); border-radius: 32px 32px 0 0;
+}
+/* Rejilla táctica de fondo */
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(230,57,70,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(230,57,70,.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.hero-glow {
+  position: absolute; top: -100px; right: -80px;
+  width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(230,57,70,.14) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
+
+.prob-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--acc-bg); border: 1px solid var(--acc-brd);
+  padding: 6px 16px; border-radius: 40px; margin-bottom: 22px;
+  font-size: .7em; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--acc2);
+}
+.prob-badge::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); animation: blink 1.6s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:.15} }
+
+.hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(1.8em, 4vw, 3em);
+  font-weight: 800; color: var(--ink); line-height: 1.1;
+  margin-bottom: 16px; max-width: 820px;
+  font-style: italic;
+}
+.hero h1 em { font-style: normal; color: var(--acc2); }
+
+.prob-text {
+  background: rgba(230,57,70,.06); border: 1px solid var(--acc-brd);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--r2) var(--r2) 0;
+  padding: 18px 24px; margin-bottom: 32px;
+  font-size: .91em; color: var(--ink2); line-height: 1.75;
+  max-width: 820px;
+}
+.prob-text strong { color: var(--acc2); font-weight: 600; }
+
+/* Zonas críticas badges */
+.zones-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 36px; }
+.zone-chip {
+  display: flex; align-items: center; gap: 9px;
+  background: rgba(255,255,255,.04); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 10px 18px;
+  font-size: .82em; color: var(--ink);
+}
+.zone-chip .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  animation: blink 2s infinite;
+}
+.dot-red { background: var(--accent); }
+.dot-gold { background: var(--gold); }
+
+/* Stats hero */
+.stats-row { display: flex; gap: 24px; flex-wrap: wrap; }
+.stat { }
+.stat-num {
+  font-family: var(--font-d); font-size: 2.2rem; font-weight: 800;
+  color: var(--ink); line-height: 1;
+}
+.stat-num em { font-style: normal; color: var(--acc2); font-size: .8em; }
+.stat-lbl { font-size: .7em; color: var(--ink3); text-transform: uppercase; letter-spacing: .08em; margin-top: 3px; }
+.stat-sep { width: 1px; background: var(--border); align-self: stretch; }
+
+/* ══ WRAPPER ══ */
+.wrap { max-width: 1080px; margin: 0 auto; padding: 36px 32px 80px; }
+@media(max-width:640px){ .wrap{ padding: 24px 16px 60px; } }
+
+/* ══ PROGRESS ══ */
+.prog-bar-wrap {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r2); padding: 16px 22px; margin-bottom: 28px;
+}
+.prog-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.prog-label { font-size: .72em; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; color: var(--ink3); }
+.prog-pct { font-family: var(--font-d); font-size: .9em; font-weight: 700; color: var(--accent); }
+.prog-track { height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--gold)); border-radius: 2px; transition: width .5s ease; width: 0%; }
+.prog-steps { display: flex; gap: 5px; margin-top: 12px; flex-wrap: wrap; }
+.ps {
+  flex: 1; min-width: 70px; padding: 5px 6px; border-radius: 6px;
+  font-size: .66em; font-weight: 600; text-align: center;
+  background: rgba(255,255,255,.04); color: var(--ink3);
+  border: 1px solid transparent; cursor: pointer; transition: all .2s;
+}
+.ps.active { background: var(--acc-bg); color: var(--acc2); border-color: var(--acc-brd); }
+.ps.done   { background: var(--teal-bg); color: var(--teal); border-color: var(--teal-brd); }
+
+/* ══ SECTIONS ══ */
+.section { display: none; animation: fadeUp .3s ease; }
+.section.vis { display: block; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:none} }
+
+/* ══ CARD ══ */
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--r3); overflow: hidden; box-shadow: var(--sh);
+  margin-bottom: 24px;
+}
+.card-hdr {
+  padding: 20px 28px; border-bottom: 1px solid var(--brd2);
+  display: flex; align-items: center; gap: 14px;
+}
+.c-ico {
+  width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 1.3em;
+}
+.ci-red  { background: var(--acc-bg); border: 1px solid var(--acc-brd); }
+.ci-gold { background: var(--gold-bg); border: 1px solid var(--gold-brd); }
+.ci-stl  { background: var(--stl-bg); border: 1px solid var(--stl-brd); }
+.ci-teal { background: var(--teal-bg); border: 1px solid var(--teal-brd); }
+.c-sub { font-size: .67em; font-weight: 600; text-transform: uppercase; letter-spacing: .09em; color: var(--ink3); margin-bottom: 2px; }
+.c-title { font-family: var(--font-d); font-size: 1em; font-weight: 600; color: var(--ink); }
+.card-body { padding: 26px 28px; }
+
+/* ══ FORM ELEMENTS ══ */
+.fld { margin-bottom: 18px; }
+.lbl {
+  display: block; font-size: .82em; font-weight: 600;
+  color: var(--ink2); margin-bottom: 6px;
+}
+.req { color: var(--accent); margin-left: 3px; }
+.hint { font-weight: 400; color: var(--ink3); font-size: .88em; margin-left: 4px; }
+
+input[type=text], input[type=date], input[type=time], input[type=number],
+textarea, select {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid rgba(255,255,255,.1);
+  border-radius: var(--r);
+  background: rgba(255,255,255,.04); color: var(--ink);
+  font-family: var(--font-b); font-size: .9em;
+  transition: border-color .2s, box-shadow .2s;
+  appearance: none; -webkit-appearance: none;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(230,57,70,.14);
+  background: rgba(255,255,255,.06);
+}
+textarea { resize: vertical; min-height: 80px; }
+select option { background: var(--card); }
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 38px;
+}
+.fld-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media(max-width:560px){ .fld-row{ grid-template-columns: 1fr; } }
+.sep { border: none; border-top: 1px solid var(--brd2); margin: 20px 0; }
+.sub-h {
+  font-family: var(--font-b); font-size: .72em; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--ink3);
+  margin: 22px 0 13px; display: flex; align-items: center; gap: 8px;
+}
+.sub-h::after { content: ''; flex: 1; height: 1px; background: var(--brd2); }
+
+/* ══ OPCIONES RADIO / CHECK ══ */
+.opts { display: flex; flex-direction: column; gap: 7px; }
+.opts.h { flex-direction: row; flex-wrap: wrap; gap: 7px; }
+.opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border: 1.5px solid rgba(255,255,255,.08);
+  border-radius: var(--r); cursor: pointer; transition: all .18s;
+  background: rgba(255,255,255,.03); font-size: .87em; color: var(--ink2);
+}
+.opt:hover { border-color: var(--accent); background: var(--acc-bg); }
+.opt input { accent-color: var(--accent); cursor: pointer; width: auto; height: auto; padding: 0; border: none; background: none; box-shadow: none; }
+.opt.sel { border-color: var(--accent); background: var(--acc-bg); color: var(--acc2); font-weight: 600; }
+
+/* ══ CHIPS ══ */
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 5px; }
+.chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 13px; border-radius: 20px; font-size: .77em; font-weight: 600;
+  cursor: pointer; border: 1.5px solid; transition: all .18s; user-select: none;
+}
+.chip input { display: none; }
+.c-r  { border-color: var(--acc-brd); color: var(--acc2); background: var(--acc-bg); }
+.c-g  { border-color: var(--gold-brd); color: var(--gold2); background: var(--gold-bg); }
+.c-s  { border-color: var(--stl-brd); color: #93a8f5; background: var(--stl-bg); }
+.c-t  { border-color: var(--teal-brd); color: var(--teal); background: var(--teal-bg); }
+.chip.sel.c-r { background: var(--accent); color: #fff; border-color: var(--accent); }
+.chip.sel.c-g { background: var(--gold); color: #000; border-color: var(--gold); }
+.chip.sel.c-s { background: var(--steel); color: #fff; border-color: var(--steel); }
+.chip.sel.c-t { background: var(--teal); color: #000; border-color: var(--teal); }
+
+/* ══ INFO BOXES ══ */
+.ib { border-radius: var(--r); padding: 13px 17px; display: flex; gap: 11px; align-items: flex-start; margin-bottom: 18px; font-size: .87em; line-height: 1.65; }
+.ib.red    { background: var(--acc-bg); border: 1px solid var(--acc-brd); color: var(--acc2); }
+.ib.gold   { background: var(--gold-bg); border: 1px solid var(--gold-brd); color: var(--gold2); }
+.ib.steel  { background: var(--stl-bg); border: 1px solid var(--stl-brd); color: #93a8f5; }
+.ib.teal   { background: var(--teal-bg); border: 1px solid var(--teal-brd); color: var(--teal); }
+.ib .ii { font-size: 1.15em; flex-shrink: 0; margin-top: 1px; }
+.ib p strong { color: inherit; }
+
+/* ══ MANIFESTACIÓN CARD (el componente central) ══ */
+.manif-card {
+  border-radius: var(--r2); overflow: hidden; margin-bottom: 18px;
+  border: 1px solid var(--border); transition: border-color .25s;
+}
+.manif-card:focus-within { border-color: rgba(230,57,70,.4); }
+.manif-hdr {
+  padding: 16px 22px; display: flex; align-items: center; gap: 14px;
+  cursor: pointer; user-select: none;
+  background: rgba(255,255,255,.025); transition: background .2s;
+}
+.manif-hdr:hover { background: rgba(230,57,70,.04); }
+.manif-num {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-d); font-size: .92em; font-weight: 700;
+  color: var(--acc2); background: var(--acc-bg); border: 1px solid var(--acc-brd);
+}
+.manif-txt { flex: 1; }
+.manif-label { font-size: .68em; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: 3px; }
+.manif-title { font-size: .88em; color: var(--ink); line-height: 1.5; }
+.manif-toggle {
+  width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,.05); border: 1px solid var(--border);
+  color: var(--ink3); font-size: .75em; transition: all .25s;
+}
+.manif-toggle.open { background: var(--acc-bg); color: var(--acc2); transform: rotate(180deg); }
+.manif-body { padding: 0 22px 22px; display: none; }
+.manif-body.open { display: block; }
+
+/* Nivel de manifestación */
+.nivel-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 14px; }
+.nivel-btn {
+  flex: 1; min-width: 90px; padding: 12px 10px; border-radius: var(--r);
+  border: 2px solid; text-align: center; cursor: pointer;
+  font-size: .79em; font-weight: 700; transition: all .2s;
+}
+.nivel-btn input { display: none; }
+.nb-no   { border-color: rgba(6,214,160,.3); color: var(--teal); background: var(--teal-bg); }
+.nb-leve { border-color: rgba(244,168,0,.3); color: var(--gold2); background: var(--gold-bg); }
+.nb-mod  { border-color: rgba(255,107,116,.3); color: var(--acc2); background: var(--acc-bg); }
+.nb-alto { border-color: rgba(230,57,70,.5); color: #fff; background: rgba(230,57,70,.18); }
+.nb-no.sel   { background: var(--teal); color: #000; border-color: var(--teal); }
+.nb-leve.sel { background: var(--gold); color: #000; border-color: var(--gold); }
+.nb-mod.sel  { background: var(--accent); color: #fff; border-color: var(--accent); }
+.nb-alto.sel { background: #8b0000; color: #fff; border-color: #8b0000; }
+
+/* ══ CHAR COUNTER ══ */
+.cc { text-align: right; font-size: .7em; color: var(--ink3); margin-top: 3px; }
+.cc.w { color: var(--gold2); } .cc.o { color: var(--accent); }
+
+/* ══ GPS ══ */
+.gps-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px; align-items: end; margin-bottom: 8px; }
+@media(max-width:480px){ .gps-row{ grid-template-columns: 1fr; } }
+.btn-gps {
+  padding: 10px 16px; background: var(--acc-bg); border: 1px solid var(--acc-brd);
+  border-radius: var(--r); color: var(--acc2); font-family: var(--font-b);
+  font-size: .84em; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all .2s;
+}
+.btn-gps:hover { background: rgba(230,57,70,.18); }
+.gps-st { font-size: .79em; margin-top: 4px; }
+.gps-st.ok  { color: var(--teal); }
+.gps-st.err { color: var(--accent); }
+
+/* ══ FOTOS ══ */
+.photo-zone {
+  border: 2px dashed rgba(255,255,255,.12); border-radius: var(--r2);
+  padding: 26px; text-align: center; background: rgba(255,255,255,.02);
+  cursor: pointer; transition: all .2s;
+}
+.photo-zone:hover { border-color: var(--accent); background: var(--acc-bg); }
+.photo-zone p { font-size: .84em; color: var(--ink3); margin-top: 6px; }
+.photo-preview { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.photo-thumb { width: 80px; height: 80px; object-fit: cover; border-radius: 8px; border: 2px solid var(--acc-brd); }
+
+/* ══ NAV BUTTONS ══ */
+.nav-btns { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 8px; padding-top: 20px; border-top: 1px solid var(--brd2); }
+.btn { padding: 11px 24px; border-radius: var(--r); font-family: var(--font-b); font-size: .9em; font-weight: 600; cursor: pointer; border: none; transition: all .2s; display: flex; align-items: center; gap: 7px; }
+.btn-prev { background: rgba(255,255,255,.06); color: var(--ink2); border: 1.5px solid rgba(255,255,255,.1); }
+.btn-prev:hover { background: rgba(255,255,255,.1); }
+.btn-next { background: var(--accent); color: #fff; box-shadow: 0 4px 20px rgba(230,57,70,.4); }
+.btn-next:hover { background: #c1121f; transform: translateY(-1px); }
+.btn-submit { background: linear-gradient(135deg, var(--accent), #8b0000); color: #fff; box-shadow: 0 4px 20px rgba(230,57,70,.45); padding: 13px 28px; font-size: .95em; }
+.btn-draft { background: transparent; color: var(--ink3); border: 1.5px solid rgba(255,255,255,.1); font-size: .82em; padding: 8px 16px; }
+.btn-draft:hover { color: var(--acc2); border-color: var(--acc-brd); }
+
+/* ══ VAL MSG ══ */
+.val-msg { font-size: .77em; color: var(--accent); margin-top: 4px; display: none; }
+.val-msg.vis { display: block; }
+
+/* ══ SUCCESS ══ */
+.success-screen { display: none; text-align: center; padding: 52px 28px; background: var(--card); border: 1px solid var(--border); border-radius: var(--r3); box-shadow: var(--sh); }
+.success-screen.vis { display: block; }
+.success-ico { font-size: 3.5em; margin-bottom: 14px; }
+.success-screen h2 { font-family: var(--font-d); font-size: 1.8em; font-weight: 800; color: var(--acc2); margin-bottom: 10px; font-style: italic; }
+.success-screen p { color: var(--ink2); font-size: .9em; max-width: 440px; margin: 0 auto 20px; line-height: 1.7; }
+.success-code { display: inline-block; padding: 8px 20px; background: var(--acc-bg); border: 1px solid var(--acc-brd); border-radius: 8px; font-family: var(--font-d); font-size: 1.1em; font-weight: 700; color: var(--acc2); margin-bottom: 22px; letter-spacing: .06em; }
+.btn-nuevo { padding: 11px 24px; background: var(--accent); color: #fff; border: none; border-radius: var(--r); font-family: var(--font-b); font-size: .9em; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="stripe"></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="tb-brand">
+    <div class="tb-seal">🔎</div>
+    <div class="tb-name">OSCC — Barranquilla 2026
+      <span>Fichas de Levantamiento · Problemas Públicos</span>
+    </div>
+  </div>
+  <div class="tb-pills">
+    <span class="pill pill-red">Problema Público N° 8</span>
+    <span class="pill pill-gold">Grupos Ilegales · Control Territorial</span>
+    <span class="pill pill-stl">CONVIVE 360°</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+
+    <div class="prob-badge">Problema Público Priorizado · Diagnóstico Territorial</div>
+
+    <h1>Ficha de Levantamiento:<br><em>Control Territorial</em><br>por Grupos Ilegales</h1>
+
+    <div class="prob-text">
+      <strong>Problema Público:</strong> Presencia de grupos ilegales que imponen un orden interno en ciertos sectores de Barranquilla — dinámica económica y regulación del comportamiento social. Se visualiza esta situación en el <strong>Suroriente</strong> y la <strong>Franja del Río</strong>.
+    </div>
+
+    <div class="zones-row">
+      <div class="zone-chip"><div class="dot dot-red"></div> Zona Suroriente</div>
+      <div class="zone-chip"><div class="dot dot-gold"></div> Franja del Río</div>
+      <div class="zone-chip"><div class="dot dot-red"></div> 8 manifestaciones a verificar</div>
+      <div class="zone-chip"><div class="dot dot-red"></div> Levantamiento en campo</div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat"><div class="stat-num">8<em> m.</em></div><div class="stat-lbl">Manifestaciones</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-num">5<em> sec.</em></div><div class="stat-lbl">Secciones</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-num">2026</div><div class="stat-lbl">Vigencia</div></div>
+      <div class="stat-sep"></div>
+      <div class="stat"><div class="stat-num">🔒</div><div class="stat-lbl">Confidencial</div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="wrap">
+
+  <!-- PROGRESS -->
+  <div class="prog-bar-wrap">
+    <div class="prog-top">
+      <span class="prog-label">Progreso de la ficha</span>
+      <span class="prog-pct" id="pct">0%</span>
+    </div>
+    <div class="prog-track"><div class="prog-fill" id="fill"></div></div>
+    <div class="prog-steps">
+      <div class="ps active" onclick="goTo(0)">1. Identificación</div>
+      <div class="ps" onclick="goTo(1)">2. Contexto del Sector</div>
+      <div class="ps" onclick="goTo(2)">3. Las 8 Manifestaciones</div>
+      <div class="ps" onclick="goTo(3)">4. Actores y Redes</div>
+      <div class="ps" onclick="goTo(4)">5. Cierre y Envío</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       SEC 1 — IDENTIFICACIÓN
+  ══════════════════════ -->
+  <div class="section vis" id="s0">
+    <div class="card">
+      <div class="card-hdr">
+        <div class="c-ico ci-red">📋</div>
+        <div><div class="c-sub">Sección 1 de 5</div><div class="c-title">Identificación del Levantamiento</div></div>
+      </div>
+      <div class="card-body">
+        <div class="ib red"><span class="ii">🔒</span><p><strong>Confidencialidad:</strong> Esta ficha contiene información de seguridad de carácter restringido. Solo debe ser diligenciada por funcionarios autorizados de la OSCC o consultores de VIRTUS GLOBAL. No compartir ni publicar. Los datos de actores de riesgo NO deben incluir nombres de personas naturales.</p></div>
+
+        <div class="fld">
+          <label class="lbl">Código de ficha <span class="hint">(generado automáticamente)</span></label>
+          <input type="text" id="codigo" readonly style="background:rgba(255,255,255,.03);color:var(--ink3);" placeholder="PP8-[LOC]-AAAA-N°">
+        </div>
+
+        <div class="fld-row">
+          <div class="fld">
+            <label class="lbl">Fecha del levantamiento <span class="req">✱</span></label>
+            <input type="date" id="fecha" required>
+            <div class="val-msg" id="vm-fecha">Ingrese la fecha del levantamiento.</div>
+          </div>
+          <div class="fld">
+            <label class="lbl">Hora de inicio <span class="req">✱</span></label>
+            <input type="time" id="hora">
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">Localidad <span class="req">✱</span></label>
+          <select id="localidad" onchange="generarCodigo()">
+            <option value="">— Seleccione la localidad —</option>
+            <option value="SOR">Suroriente</option>
+            <option value="SOC">Suroccidente</option>
+            <option value="MET">Metropolitana</option>
+            <option value="NCH">Norte-Centro Histórico</option>
+            <option value="RIO">Riomar</option>
+          </select>
+          <div class="val-msg" id="vm-loc">Seleccione la localidad.</div>
+        </div>
+
+        <div class="fld-row">
+          <div class="fld">
+            <label class="lbl">Barrio / Sector específico <span class="req">✱</span></label>
+            <input type="text" id="barrio" placeholder="Nombre del barrio o sector" required>
+            <div class="val-msg" id="vm-barrio">Ingrese el barrio o sector.</div>
+          </div>
+          <div class="fld">
+            <label class="lbl">Zona del problema</label>
+            <select>
+              <option value="">— Seleccione —</option>
+              <option>Suroriente</option>
+              <option>Franja del Río</option>
+              <option>Ambas zonas</option>
+              <option>Otra — especificar en observaciones</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sub-h">📍 Georreferenciación</div>
+        <div class="gps-row">
+          <div class="fld"><label class="lbl">Latitud</label><input type="text" id="lat" placeholder="Ej: 10.9685" readonly></div>
+          <div class="fld"><label class="lbl">Longitud</label><input type="text" id="lng" placeholder="Ej: -74.7943" readonly></div>
+          <button class="btn-gps" onclick="capGPS()">📡 Capturar GPS</button>
+        </div>
+        <div class="gps-st" id="gps-st"></div>
+
+        <div class="sub-h">👤 Responsable del Levantamiento</div>
+        <div class="fld-row">
+          <div class="fld">
+            <label class="lbl">Nombre completo <span class="req">✱</span></label>
+            <input type="text" id="resp" placeholder="Nombre y apellidos" required>
+            <div class="val-msg" id="vm-resp">Ingrese el nombre del responsable.</div>
+          </div>
+          <div class="fld">
+            <label class="lbl">Cargo / Rol <span class="req">✱</span></label>
+            <select id="cargo">
+              <option value="">— Seleccione —</option>
+              <option>MG (R) Omar Rubiano — Consultor Líder VG</option>
+              <option>CR (R) Nicolás Martín — Consultor VG</option>
+              <option>Camilo Martínez — Consultor VG</option>
+              <option>Gestor de Convivencia — OSCC</option>
+              <option>Analista territorial — OSCC</option>
+              <option>Enlace Policía Nacional</option>
+              <option>Karen Ortegón — OSCC</option>
+            </select>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Tipo de levantamiento <span class="req">✱</span></label>
+          <div class="opts h">
+            <label class="opt"><input type="radio" name="tipo-lev"> Recorrido de campo</label>
+            <label class="opt"><input type="radio" name="tipo-lev"> Taller comunitario</label>
+            <label class="opt"><input type="radio" name="tipo-lev"> Análisis institucional (SIEDCO/SIJIN)</label>
+            <label class="opt"><input type="radio" name="tipo-lev"> Mixto — campo + institucional</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Personas que acompañan el levantamiento <span class="hint">(separar con coma)</span></label>
+          <input type="text" placeholder="Ej: Inspector Ramírez (Policía Cuadrante 6), Pedro Soto (JAC Barrio Sur)">
+        </div>
+
+        <div class="nav-btns">
+          <span></span>
+          <button class="btn btn-next" onclick="siguiente(0)">Siguiente → Contexto del Sector</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       SEC 2 — CONTEXTO
+  ══════════════════════ -->
+  <div class="section" id="s1">
+    <div class="card">
+      <div class="card-hdr">
+        <div class="c-ico ci-gold">🗺️</div>
+        <div><div class="c-sub">Sección 2 de 5</div><div class="c-title">Contexto General del Sector</div></div>
+      </div>
+      <div class="card-body">
+        <div class="ib gold"><span class="ii">ℹ️</span><p>Registre las características generales del sector donde se verifica la presencia del grupo ilegal con control territorial. Esta información contextualiza el análisis de las 8 manifestaciones.</p></div>
+
+        <div class="fld">
+          <label class="lbl">Descripción del sector y su contexto de seguridad <span class="req">✱</span> <span class="hint">(máx. 600 car.)</span></label>
+          <textarea id="desc-sector" maxlength="600" placeholder="Describa el sector: tipo de zona (residencial, mixta, etc.), extensión, características físicas relevantes, tiempo aproximado en que se evidencia la situación y antecedentes conocidos de intervenciones previas..."></textarea>
+          <div class="cc" id="cc-ds">0/600</div>
+          <div class="val-msg" id="vm-sector">La descripción del sector es obligatoria.</div>
+        </div>
+
+        <div class="fld-row">
+          <div class="fld">
+            <label class="lbl">Tipo de zona predominante</label>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="zona"> Residencial popular</label>
+              <label class="opt"><input type="radio" name="zona"> Mixta (residencial + comercial)</label>
+              <label class="opt"><input type="radio" name="zona"> Periférica / invasión</label>
+              <label class="opt"><input type="radio" name="zona"> Corredor fluvial (Franja del Río)</label>
+            </div>
+          </div>
+          <div class="fld">
+            <label class="lbl">Densidad poblacional estimada</label>
+            <div class="opts">
+              <label class="opt"><input type="radio" name="dens"> Alta</label>
+              <label class="opt"><input type="radio" name="dens"> Media</label>
+              <label class="opt"><input type="radio" name="dens"> Baja</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">¿Cuánto tiempo lleva la situación en el sector?</label>
+          <div class="opts h">
+            <label class="opt"><input type="radio" name="tiempo"> Menos de 1 año</label>
+            <label class="opt"><input type="radio" name="tiempo"> 1 a 3 años</label>
+            <label class="opt"><input type="radio" name="tiempo"> 3 a 5 años</label>
+            <label class="opt"><input type="radio" name="tiempo"> Más de 5 años</label>
+            <label class="opt"><input type="radio" name="tiempo"> Se desconoce</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">¿El sector ha tenido intervenciones institucionales previas relacionadas con este problema?</label>
+          <div class="opts h">
+            <label class="opt"><input type="radio" name="interv"> Sí — con resultados positivos</label>
+            <label class="opt"><input type="radio" name="interv"> Sí — sin resultados significativos</label>
+            <label class="opt"><input type="radio" name="interv"> No — primera intervención</label>
+            <label class="opt"><input type="radio" name="interv"> Se desconoce</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">Servicios públicos domiciliarios con cobertura en el sector</label>
+          <div class="chips">
+            <label class="chip c-s"><input type="checkbox"> ⚡ Energía eléctrica</label>
+            <label class="chip c-s"><input type="checkbox"> 💧 Agua potable</label>
+            <label class="chip c-s"><input type="checkbox"> 🗑️ Aseo / recolección</label>
+            <label class="chip c-s"><input type="checkbox"> 🔥 Gas natural</label>
+            <label class="chip c-r"><input type="checkbox"> ❌ Sin servicio o irregular</label>
+          </div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-prev" onclick="anterior(1)">← Anterior</button>
+          <button class="btn btn-next" onclick="siguiente(1)">Siguiente → Las 8 Manifestaciones</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       SEC 3 — LAS 8 MANIFESTACIONES
+  ══════════════════════ -->
+  <div class="section" id="s2">
+    <div class="card">
+      <div class="card-hdr">
+        <div class="c-ico ci-red">⚠️</div>
+        <div><div class="c-sub">Sección 3 de 5 — NÚCLEO DE LA FICHA</div><div class="c-title">Verificación de las 8 Manifestaciones del Problema</div></div>
+      </div>
+      <div class="card-body">
+        <div class="ib red"><span class="ii">🔴</span><p><strong>Instrucción crítica:</strong> Para cada manifestación, indique el nivel de presencia observada en el sector y registre evidencia concreta. <strong>NO incluya nombres de personas naturales.</strong> Use la descripción del patrón, la zona y las condiciones observadas. Expanda cada manifestación haciendo clic en ella.</p></div>
+
+        <!-- MANIFESTACIÓN 1 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">1</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 1 · Servicios Públicos</div>
+              <div class="manif-title">Limitaciones para que los operadores de servicios públicos domiciliarios apliquen sanciones por no pago, realicen obras para ampliación de la oferta o mejoramiento de la calidad del servicio.</div>
+            </div>
+            <div class="manif-toggle open">▼</div>
+          </div>
+          <div class="manif-body open">
+            <div class="sub-h">Nivel de presencia de esta manifestación en el sector</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv1"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv1"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv1"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv1"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">¿Qué servicios públicos presentan limitaciones en el sector?</label>
+              <div class="chips">
+                <label class="chip c-r"><input type="checkbox"> Energía eléctrica (Air-e)</label>
+                <label class="chip c-r"><input type="checkbox"> Agua potable (Triple A)</label>
+                <label class="chip c-r"><input type="checkbox"> Gas natural</label>
+                <label class="chip c-r"><input type="checkbox"> Aseo / recolección</label>
+                <label class="chip c-r"><input type="checkbox"> Todos los anteriores</label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Descripción de la situación observada en campo <span class="hint">(máx. 500 car.)</span></label>
+              <textarea id="m1" maxlength="500" placeholder="¿Qué limitaciones específicas tienen los operadores para actuar en este sector? ¿Hay evidencia de que los operadores no pueden cobrar, sancionar o hacer obras? Describa sin mencionar nombres de personas..."></textarea>
+              <div class="cc" id="cc1">0/500</div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Fuente de información</label>
+              <div class="opts h">
+                <label class="opt"><input type="radio" name="f1"> Observación directa en campo</label>
+                <label class="opt"><input type="radio" name="f1"> Reporte de operador</label>
+                <label class="opt"><input type="radio" name="f1"> Comunidad / líderes</label>
+                <label class="opt"><input type="radio" name="f1"> Datos institucionales</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 2 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">2</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 2 · Indisciplina Social Ausente</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores no se presentan ciertos episodios de indisciplina social generados por grupos sociales o por individuos aislados.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib gold"><span class="ii">ℹ️</span><p>Esta manifestación es paradójica: la <strong>ausencia de indisciplina social</strong> es una señal del control que ejerce el grupo ilegal. Si en el sector no hay conflictos vecinales ni desorden visible, puede ser porque el grupo los suprime.</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv2"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv2"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv2"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv2"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">Observaciones sobre el nivel de orden aparente en el sector</label>
+              <textarea id="m2" maxlength="500" placeholder="¿El barrio muestra un nivel de orden que contrasta con otros sectores similares? ¿Los vecinos mencionan que 'aquí nadie se mete con nadie' o que 'el que se porta mal se va'? Registre sin nombres..."></textarea>
+              <div class="cc" id="cc2">0/500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 3 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">3</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 3 · Silencio ante Delitos</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores no se demanda la presencia de las autoridades ante hechos de delincuencia o violencia interpersonal.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib red"><span class="ii">🚨</span><p>Esta manifestación indica que la comunidad ha interiorizado que <strong>llamar a la Policía o denunciar</strong> trae consecuencias negativas. Es una de las señales más críticas de control territorial.</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv3"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv3"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv3"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv3"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">¿Cuándo fue la última vez que se registró una llamada a la Policía o denuncia desde el sector? <span class="hint">(si se conoce)</span></label>
+              <div class="opts h">
+                <label class="opt"><input type="radio" name="denu3"> En el último mes</label>
+                <label class="opt"><input type="radio" name="denu3"> Hace 3 a 6 meses</label>
+                <label class="opt"><input type="radio" name="denu3"> Hace más de 6 meses</label>
+                <label class="opt"><input type="radio" name="denu3"> No se conocen denuncias recientes</label>
+                <label class="opt"><input type="radio" name="denu3"> No hay información disponible</label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Observaciones sobre el silencio ante delitos en el sector</label>
+              <textarea id="m3" maxlength="500" placeholder="¿Hay evidencia de que los residentes evitan llamar a la Policía? ¿Qué razones expresan? ¿Hay diferencia entre lo que informan en público y en privado? Registre sin nombres..."></textarea>
+              <div class="cc" id="cc3">0/500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 4 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">4</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 4 · Reconocimiento como Autoridad</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores los habitantes los reconocen como el único actor válido y legítimo para la regulación y el control de actividades económicas y sociales.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib red"><span class="ii">⚠️</span><p>Esta es la manifestación central del problema público. Cuando la comunidad reconoce al grupo ilegal como <strong>autoridad legítima</strong>, el Estado ha perdido su función reguladora en ese territorio.</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv4"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv4"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv4"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv4"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">¿En qué ámbitos reconocen la comunidad la autoridad del grupo ilegal?</label>
+              <div class="chips">
+                <label class="chip c-r"><input type="checkbox"> Resolución de conflictos vecinales</label>
+                <label class="chip c-r"><input type="checkbox"> Regulación del comercio local</label>
+                <label class="chip c-r"><input type="checkbox"> Permisos para actividades comerciales</label>
+                <label class="chip c-r"><input type="checkbox"> Mediación en disputas familiares</label>
+                <label class="chip c-r"><input type="checkbox"> Control de actividades sociales</label>
+                <label class="chip c-r"><input type="checkbox"> Regulación de acceso al barrio</label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Observaciones sobre el reconocimiento de autoridad <span class="hint">(máx. 500 car.)</span></label>
+              <textarea id="m4" maxlength="500" placeholder="¿Qué expresiones o comportamientos comunitarios evidencian este reconocimiento? ¿Los vecinos acuden al grupo para resolver disputas? Registre sin nombres de personas..."></textarea>
+              <div class="cc" id="cc4">0/500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 5 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">5</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 5 · Homicidios por Sicariato</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores prevalecen los homicidios bajo la modalidad de sicariato o descuartizamiento.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib red"><span class="ii">🔴</span><p><strong>Fuente primaria: SIEDCO.</strong> Esta manifestación debe respaldarse con datos objetivos. No es un campo de percepción — es una verificación estadística. Si no tiene acceso a los datos del SIEDCO en campo, indíquelo y complete con información disponible.</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv5"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv5"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv5"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv5"> 🔴 Alta</label>
+            </div>
+            <div class="fld-row">
+              <div class="fld">
+                <label class="lbl">N° de homicidios por sicariato registrados (último trimestre)</label>
+                <input type="number" min="0" max="999" placeholder="N° — fuente SIEDCO">
+              </div>
+              <div class="fld">
+                <label class="lbl">Fuente del dato</label>
+                <select>
+                  <option value="">— Seleccione —</option>
+                  <option>SIEDCO — Policía Nacional</option>
+                  <option>Fiscalía General de la Nación</option>
+                  <option>Reporte operativo SIJIN</option>
+                  <option>Dato no disponible en campo</option>
+                </select>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Observaciones sobre modalidad de homicidios</label>
+              <textarea id="m5" maxlength="500" placeholder="Características de los homicidios: horario, zona del barrio, perfil general de víctimas (sin nombres), patrón observado. Fuente de la información utilizada..."></textarea>
+              <div class="cc" id="cc5">0/500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 6 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">6</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 6 · Ocupación Ilegal de Viviendas</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores hay ocupación ilegal de viviendas por parte del actor que impone el orden interno.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib gold"><span class="ii">🏚️</span><p>La ocupación ilegal de viviendas es una forma de consolidar el control territorial y la presencia permanente del grupo en el barrio. Puede combinarse con el desplazamiento (Manifestación 7).</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv6"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv6"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv6"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv6"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">N° estimado de viviendas con ocupación ilegal identificadas</label>
+              <input type="number" min="0" max="999" placeholder="Estimación — si no se conoce, deje en 0">
+            </div>
+            <div class="fld">
+              <label class="lbl">Tipo de ocupación ilegal identificada</label>
+              <div class="chips">
+                <label class="chip c-r"><input type="checkbox"> Viviendas abandonadas por desplazamiento</label>
+                <label class="chip c-r"><input type="checkbox"> Viviendas tomadas por fuerza</label>
+                <label class="chip c-r"><input type="checkbox"> Arrendamiento forzado (cobro ilegal)</label>
+                <label class="chip c-r"><input type="checkbox"> Uso de viviendas como puntos de operación</label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Descripción de la situación de ocupación ilegal</label>
+              <textarea id="m6" maxlength="500" placeholder="Describa el patrón de ocupación: zona del barrio, tipo de viviendas afectadas, tiempo estimado de la situación. No incluya direcciones exactas ni nombres de personas..."></textarea>
+              <div class="cc" id="cc6">0/500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 7 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">7</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 7 · Desplazamiento Intraurbano</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores hay constantes episodios de desplazamiento intraurbano bajo amenaza directa o indirecta a ciertas familias.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib red"><span class="ii">🏃</span><p><strong>Dato de alta sensibilidad.</strong> Si hay familias desplazadas activamente al momento del levantamiento, active inmediatamente el protocolo de alerta de la OSCC. Registre el patrón sin datos personales de las familias afectadas.</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv7"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv7"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv7"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv7"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">¿Hay casos de desplazamiento activos al momento del levantamiento?</label>
+              <div class="opts h">
+                <label class="opt"><input type="radio" name="desp7"> Sí — familias desplazadas actualmente</label>
+                <label class="opt"><input type="radio" name="desp7"> Episodios recientes (último trimestre)</label>
+                <label class="opt"><input type="radio" name="desp7"> Historial de desplazamientos, no activo</label>
+                <label class="opt"><input type="radio" name="desp7"> No se identificaron episodios</label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">N° estimado de familias desplazadas (si se conoce)</label>
+              <input type="number" min="0" placeholder="Estimación — fuente comunitaria o institucional">
+            </div>
+            <div class="fld">
+              <label class="lbl">Descripción del patrón de desplazamiento <span class="hint">(sin datos personales)</span></label>
+              <textarea id="m7" maxlength="500" placeholder="Tipo de amenaza (directa/indirecta), zona de origen, destino aproximado, frecuencia. No incluya nombres, documentos ni direcciones exactas de las familias afectadas. Si hay casos activos, notifique a OSCC inmediatamente."></textarea>
+              <div class="cc" id="cc7">0/500</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MANIFESTACIÓN 8 -->
+        <div class="manif-card">
+          <div class="manif-hdr" onclick="toggleManif(this)">
+            <div class="manif-num">8</div>
+            <div class="manif-txt">
+              <div class="manif-label">Manifestación 8 · Ausencia de Demanda Institucional</div>
+              <div class="manif-title">En los barrios en los que habitan estos actores no hay una demanda por parte de los ciudadanos de servicios de justicia, ni por el servicio de policía permanentes en el territorio.</div>
+            </div>
+            <div class="manif-toggle">▼</div>
+          </div>
+          <div class="manif-body">
+            <div class="ib gold"><span class="ii">🏛️</span><p>Esta manifestación mide el grado de <strong>abandono institucional percibido</strong> y la <strong>internalización del control</strong> por parte de la comunidad. La ausencia de demanda de justicia es una señal de que el Estado ya no es visto como proveedor legítimo de seguridad en ese territorio.</p></div>
+            <div class="sub-h">Nivel de presencia de esta manifestación</div>
+            <div class="nivel-row">
+              <label class="nivel-btn nb-no"><input type="radio" name="niv8"> 🟢 No presente</label>
+              <label class="nivel-btn nb-leve"><input type="radio" name="niv8"> 🟡 Leve</label>
+              <label class="nivel-btn nb-mod"><input type="radio" name="niv8"> 🟠 Moderada</label>
+              <label class="nivel-btn nb-alto"><input type="radio" name="niv8"> 🔴 Alta</label>
+            </div>
+            <div class="fld">
+              <label class="lbl">¿Qué servicios institucionales ya no son demandados por la comunidad?</label>
+              <div class="chips">
+                <label class="chip c-r"><input type="checkbox"> Servicio de Policía permanente</label>
+                <label class="chip c-r"><input type="checkbox"> Jueces de paz / Comisaría</label>
+                <label class="chip c-r"><input type="checkbox"> Fiscalía / denuncias formales</label>
+                <label class="chip c-r"><input type="checkbox"> Defensoría del Pueblo</label>
+                <label class="chip c-r"><input type="checkbox"> Ninguno — todos los servicios son demandados normalmente</label>
+              </div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Observaciones sobre la relación comunidad-instituciones de justicia</label>
+              <textarea id="m8" maxlength="500" placeholder="¿Qué expresa la comunidad sobre la Policía y la justicia? ¿Hay temor de denunciar? ¿Se percibe que el grupo ilegal resuelve conflictos mejor que las instituciones? Registre sin nombres..."></textarea>
+              <div class="cc" id="cc8">0/500</div>
+            </div>
+            <div class="fld">
+              <label class="lbl">Presencia policial percibida por la comunidad</label>
+              <div class="opts h">
+                <label class="opt"><input type="radio" name="pol8"> Permanente y visible</label>
+                <label class="opt"><input type="radio" name="pol8"> Frecuente</label>
+                <label class="opt"><input type="radio" name="pol8"> Ocasional</label>
+                <label class="opt"><input type="radio" name="pol8"> Ausente o inexistente</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEMÁFORO RESUMEN -->
+        <div class="card" style="margin-top:24px;">
+          <div class="card-hdr">
+            <div class="c-ico ci-gold">📊</div>
+            <div><div class="c-sub">Síntesis automática</div><div class="c-title">Semáforo de Manifestaciones del Sector</div></div>
+          </div>
+          <div class="card-body">
+            <div class="ib steel"><span class="ii">ℹ️</span><p>Este semáforo se construye automáticamente a partir de los niveles seleccionados. Un sector con 5 o más manifestaciones en nivel Alto o Moderado requiere <strong>activación inmediata de protocolo de intervención</strong> de la OSCC.</p></div>
+            <div id="semaforo-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+              <!-- generado por JS -->
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-btns" style="margin-top:0;">
+          <button class="btn btn-prev" onclick="anterior(2)">← Anterior</button>
+          <button class="btn btn-next" onclick="siguiente(2)">Siguiente → Actores y Redes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       SEC 4 — ACTORES Y REDES
+  ══════════════════════ -->
+  <div class="section" id="s3">
+    <div class="card">
+      <div class="card-hdr">
+        <div class="c-ico ci-red">👥</div>
+        <div><div class="c-sub">Sección 4 de 5 — RESERVADO</div><div class="c-title">Actores, Redes y Capacidad Institucional</div></div>
+      </div>
+      <div class="card-body">
+        <div class="ib red"><span class="ii">🔒</span><p><strong>Información de carácter reservado.</strong> Todo lo que registre en esta sección es de manejo exclusivo del OSCC, SIJIN y entidades autorizadas. <strong>NUNCA registre nombres de personas naturales, apodos que permitan identificarlos ni información que ponga en riesgo a fuentes comunitarias o al funcionario que diligenció la ficha.</strong></p></div>
+
+        <div class="sub-h">⚠️ Perfil del Grupo Ilegal (sin datos personales)</div>
+        <div class="fld">
+          <label class="lbl">Tipo estimado de estructura</label>
+          <div class="opts h">
+            <label class="opt"><input type="radio" name="tipo-grupo"> Pandilla barrial</label>
+            <label class="opt"><input type="radio" name="tipo-grupo"> Banda criminal con estructura definida</label>
+            <label class="opt"><input type="radio" name="tipo-grupo"> Brazo local de organización de mayor escala</label>
+            <label class="opt"><input type="radio" name="tipo-grupo"> Se desconoce el tipo de estructura</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Actividades económicas ilegales identificadas en el sector</label>
+          <div class="chips">
+            <label class="chip c-r"><input type="checkbox"> Microtráfico / venta de SPA</label>
+            <label class="chip c-r"><input type="checkbox"> Extorsión a comercio local</label>
+            <label class="chip c-r"><input type="checkbox"> Cobro de "vacuna" a residentes</label>
+            <label class="chip c-r"><input type="checkbox"> Cobro por protección a negocios</label>
+            <label class="chip c-r"><input type="checkbox"> Arrendamiento ilegal de predios</label>
+            <label class="chip c-r"><input type="checkbox"> Préstamo informal / gota a gota</label>
+            <label class="chip c-g"><input type="checkbox"> No identificadas con certeza</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Tamaño estimado de la estructura (número de personas vinculadas)</label>
+          <div class="opts h">
+            <label class="opt"><input type="radio" name="tamano"> Pequeña (menos de 10)</label>
+            <label class="opt"><input type="radio" name="tamano"> Mediana (10–30)</label>
+            <label class="opt"><input type="radio" name="tamano"> Grande (más de 30)</label>
+            <label class="opt"><input type="radio" name="tamano"> Se desconoce</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Descripción del perfil del grupo (patrón de comportamiento, zona de influencia, modalidad de control) <span class="hint">— Sin nombres ni datos personales — máx. 600 car.</span></label>
+          <textarea id="perfil-grupo" maxlength="600" placeholder="Describa: zona exacta de influencia dentro del barrio, modalidad de ejercicio del control, tipo de interacción con la comunidad, horarios de actividad, cambios recientes en el patrón. NO incluya nombres, apodos identificables ni información que ponga en riesgo al informante..."></textarea>
+          <div class="cc" id="cc-pg">0/600</div>
+        </div>
+
+        <hr class="sep">
+        <div class="sub-h">🏛️ Capacidad Institucional de Respuesta</div>
+        <div class="fld">
+          <label class="lbl">Entidades con presencia activa en el sector</label>
+          <div class="chips">
+            <label class="chip c-s"><input type="checkbox"> Policía Nacional — cuadrante asignado</label>
+            <label class="chip c-s"><input type="checkbox"> SIJIN</label>
+            <label class="chip c-s"><input type="checkbox"> Fiscalía / CTI</label>
+            <label class="chip c-s"><input type="checkbox"> Alcaldía Local</label>
+            <label class="chip c-t"><input type="checkbox"> JAC activa</label>
+            <label class="chip c-t"><input type="checkbox"> Organizaciones comunitarias</label>
+            <label class="chip c-r"><input type="checkbox"> Ninguna con presencia activa</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Evaluación de la capacidad institucional para intervenir este problema</label>
+          <div class="nivel-row">
+            <label class="nivel-btn nb-no" style="border-color:rgba(6,214,160,.4)"><input type="radio" name="cap-inst"> 🟢 Alta</label>
+            <label class="nivel-btn nb-leve"><input type="radio" name="cap-inst"> 🟡 Media</label>
+            <label class="nivel-btn nb-mod"><input type="radio" name="cap-inst"> 🟠 Limitada</label>
+            <label class="nivel-btn nb-alto"><input type="radio" name="cap-inst"> 🔴 Muy baja</label>
+          </div>
+        </div>
+        <div class="fld">
+          <label class="lbl">Principales brechas institucionales para abordar el problema</label>
+          <div class="chips">
+            <label class="chip c-r"><input type="checkbox"> Sin patrullaje permanente</label>
+            <label class="chip c-r"><input type="checkbox"> Bajo número de efectivos de Policía</label>
+            <label class="chip c-r"><input type="checkbox"> Sin acceso de servicios públicos al sector</label>
+            <label class="chip c-r"><input type="checkbox"> Sin presencia del sistema de justicia</label>
+            <label class="chip c-r"><input type="checkbox"> Comunidad no denuncia por temor</label>
+            <label class="chip c-r"><input type="checkbox"> Sin programas sociales activos</label>
+          </div>
+        </div>
+
+        <div class="nav-btns">
+          <button class="btn btn-prev" onclick="anterior(3)">← Anterior</button>
+          <button class="btn btn-next" onclick="siguiente(3)">Siguiente → Cierre y Envío</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════
+       SEC 5 — CIERRE
+  ══════════════════════ -->
+  <div class="section" id="s4">
+    <div class="card">
+      <div class="card-hdr">
+        <div class="c-ico ci-teal">✅</div>
+        <div><div class="c-sub">Sección 5 de 5</div><div class="c-title">Registro Fotográfico, Conclusión y Envío</div></div>
+      </div>
+      <div class="card-body">
+
+        <div class="sub-h">📸 Registro Fotográfico</div>
+        <div class="ib red"><span class="ii">📷</span><p><strong>No fotografíe personas.</strong> Solo se fotografían espacios, infraestructura y contexto territorial. Las fotografías son contextuales — no deben contener información que identifique individuos ni que pueda comprometer fuentes.</p></div>
+        <div class="photo-zone" onclick="document.getElementById('fotos-input').click()">
+          <div style="font-size:2em">📸</div>
+          <p><strong>Toque para adjuntar fotografías del contexto territorial</strong><br>Formato JPG/PNG · Máximo 8 fotos · Sin personas identificables</p>
+          <input type="file" id="fotos-input" accept="image/*" multiple onchange="prevFotos(event)" style="display:none;">
+        </div>
+        <div class="photo-preview" id="prev"></div>
+
+        <hr class="sep">
+        <div class="sub-h">🕐 Datos de cierre</div>
+        <div class="fld-row">
+          <div class="fld"><label class="lbl">Hora de finalización <span class="req">✱</span></label><input type="time" id="hora-fin"></div>
+          <div class="fld"><label class="lbl">N° de personas consultadas en el levantamiento</label><input type="number" min="0" max="999" placeholder="Total de personas"></div>
+        </div>
+
+        <hr class="sep">
+        <div class="sub-h">📝 Conclusión y Recomendaciones</div>
+        <div class="fld">
+          <label class="lbl">Conclusión general del levantamiento <span class="req">✱</span> <span class="hint">(máx. 900 car.)</span></label>
+          <textarea id="conclusion" maxlength="900" required placeholder="Sintetice: manifestaciones más críticas (con su nivel), nivel general de control territorial del grupo ilegal en el sector, brechas institucionales más urgentes y acciones prioritarias que recomienda activar de forma inmediata. Jerarquice por urgencia: lo más grave primero..."></textarea>
+          <div class="cc" id="cc-conc">0/900</div>
+          <div class="val-msg" id="vm-conc">La conclusión del levantamiento es obligatoria.</div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">Nivel de urgencia de intervención en este sector</label>
+          <div class="nivel-row">
+            <label class="nivel-btn nb-no" style="border-color:rgba(6,214,160,.4)"><input type="radio" name="urgencia"> 🟢 BAJA<br><small>Monitoreo periódico</small></label>
+            <label class="nivel-btn nb-leve"><input type="radio" name="urgencia"> 🟡 MEDIA<br><small>Programa próximo ciclo</small></label>
+            <label class="nivel-btn nb-mod"><input type="radio" name="urgencia"> 🟠 ALTA<br><small>Intervención prioritaria</small></label>
+            <label class="nivel-btn nb-alto"><input type="radio" name="urgencia"> 🔴 CRÍTICA<br><small>Acción inmediata</small></label>
+          </div>
+        </div>
+
+        <div class="sub-h">🚨 Alertas y Acciones a Activar</div>
+        <div class="fld">
+          <label class="lbl">Seleccione todas las acciones que deben activarse tras este levantamiento</label>
+          <div class="opts">
+            <label class="opt"><input type="checkbox"> Alerta urgente SIJIN — desplazamiento activo o amenazas directas identificadas</label>
+            <label class="opt"><input type="checkbox"> Activación de ruta de protección — víctimas identificadas sin atención institucional</label>
+            <label class="opt"><input type="checkbox"> Reporte a Fiscalía CTI — actividades criminales documentadas</label>
+            <label class="opt"><input type="checkbox"> Coordinación con operadores de servicios públicos — limitaciones identificadas</label>
+            <label class="opt"><input type="checkbox"> Inclusión en próxima mesa del Consejo de Seguridad</label>
+            <label class="opt"><input type="checkbox"> Solicitud de refuerzo de patrullaje a Policía Nacional</label>
+            <label class="opt"><input type="checkbox"> Articulación con ICBF — NNA en riesgo identificados</label>
+            <label class="opt"><input type="checkbox"> Programa de fortalecimiento comunitario — comunidad sin capacidad de denuncia</label>
+            <label class="opt"><input type="checkbox"> Sin acción inmediata — seguimiento en próximo ciclo</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">¿Este sector requiere seguimiento prioritario?</label>
+          <div class="opts h">
+            <label class="opt"><input type="radio" name="seguim"> Sí — urgente (menos de 2 semanas)</label>
+            <label class="opt"><input type="radio" name="seguim"> Sí — próximo ciclo mensual</label>
+            <label class="opt"><input type="radio" name="seguim"> Sí — próximo ciclo trimestral</label>
+            <label class="opt"><input type="radio" name="seguim"> No — monitoreo general</label>
+          </div>
+        </div>
+
+        <div class="fld">
+          <label class="lbl">Firma del responsable del levantamiento</label>
+          <input type="text" id="firma" placeholder="Escriba su nombre completo como firma del levantamiento">
+        </div>
+
+        <div class="ib teal" style="margin-top:20px;">
+          <span class="ii">🔄</span>
+          <p>Al enviar esta ficha, la información será dirigida al <strong>Centro de Control de Información Territorial del OSCC</strong>. Las alertas de urgencia crítica generarán notificación en las siguientes <strong>12–24 horas</strong>. Toda la información es de carácter estrictamente confidencial.</p>
+        </div>
+
+        <div class="nav-btns">
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn btn-prev" onclick="anterior(4)">← Anterior</button>
+            <button class="btn btn-draft btn" onclick="guardarBorrador()">💾 Guardar borrador</button>
+          </div>
+          <button class="btn btn-submit" onclick="enviar()">🔎 Enviar Ficha · Problema Público 8</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="success">
+    <div class="success-ico">🔎</div>
+    <h2>Ficha registrada exitosamente</h2>
+    <p>El levantamiento del Problema Público N° 8 ha sido enviado al Centro de Control de Información Territorial del OSCC. El equipo técnico procesará las alertas identificadas en las próximas horas.</p>
+    <div class="success-code" id="success-code">PP8-XXX-0001</div>
+    <p style="font-size:.82em;color:var(--ink3);margin-bottom:20px;">Guarde este código como referencia del levantamiento. Toda la información es confidencial y de manejo institucional exclusivo.</p>
+    <button class="btn-nuevo" onclick="nuevaFicha()">+ Nueva ficha</button>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+/* ─── CORE ─────────────────────────── */
+let cur = 0;
+const total = 5;
+
+function updateProg(n) {
+  const p = Math.round(n / total * 100);
+  document.getElementById('fill').style.width = p + '%';
+  document.getElementById('pct').textContent = p + '%';
+  document.querySelectorAll('.ps').forEach((el, i) => {
+    el.classList.remove('active','done');
+    if (i === n) el.classList.add('active');
+    else if (i < n) el.classList.add('done');
+  });
+}
+function goTo(n) {
+  document.getElementById('s' + cur).classList.remove('vis');
+  cur = n;
+  document.getElementById('s' + cur).classList.add('vis');
+  updateProg(n);
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function siguiente(n) { if (!validar(n)) return; goTo(n + 1); actualizarSemaforo(); }
+function anterior(n)   { goTo(n - 1); }
+
+/* ─── VALIDACIÓN ────────────────────── */
+function validar(n) {
+  let ok = true;
+  if (n === 0) {
+    [['fecha','vm-fecha'],['localidad','vm-loc'],['barrio','vm-barrio'],['resp','vm-resp']].forEach(([id,vm]) => {
+      const el = document.getElementById(id);
+      const v  = document.getElementById(vm);
+      if (!el.value.trim()) { el.style.borderColor = 'var(--accent)'; v.classList.add('vis'); ok = false; }
+      else { el.style.borderColor = ''; v.classList.remove('vis'); }
+    });
+  }
+  if (n === 1) {
+    const ds = document.getElementById('desc-sector');
+    const vm = document.getElementById('vm-sector');
+    if (!ds.value.trim()) { ds.style.borderColor = 'var(--accent)'; vm.classList.add('vis'); ok = false; }
+    else { ds.style.borderColor = ''; vm.classList.remove('vis'); }
+  }
+  if (n === 4) {
+    const c = document.getElementById('conclusion');
+    const v = document.getElementById('vm-conc');
+    if (!c.value.trim()) { c.style.borderColor = 'var(--accent)'; v.classList.add('vis'); ok = false; }
+    else { c.style.borderColor = ''; v.classList.remove('vis'); }
+  }
+  return ok;
+}
+
+/* ─── CÓDIGO ────────────────────────── */
+function generarCodigo() {
+  const loc = document.getElementById('localidad').value;
+  const f   = (document.getElementById('fecha').value || '').replace(/-/g,'');
+  if (loc && f) {
+    const n = String(Math.floor(Math.random() * 900) + 100);
+    document.getElementById('codigo').value = 'PP8-' + loc + '-' + f + '-' + n;
+  }
+}
+document.getElementById('fecha').addEventListener('change', generarCodigo);
+
+/* ─── GPS ───────────────────────────── */
+function capGPS() {
+  const st = document.getElementById('gps-st');
+  st.textContent = '⏳ Obteniendo ubicación...'; st.className = 'gps-st';
+  if (!navigator.geolocation) {
+    st.className = 'gps-st err'; st.textContent = '⚠ GPS no disponible.'; return;
+  }
+  navigator.geolocation.getCurrentPosition(pos => {
+    document.getElementById('lat').value = pos.coords.latitude.toFixed(6);
+    document.getElementById('lng').value = pos.coords.longitude.toFixed(6);
+    st.className = 'gps-st ok';
+    st.textContent = '✓ GPS capturado — Precisión: ' + Math.round(pos.coords.accuracy) + ' m';
+  }, () => {
+    st.className = 'gps-st err';
+    st.textContent = '⚠ No se pudo obtener la ubicación. Active el GPS e intente de nuevo.';
+  }, { enableHighAccuracy: true, timeout: 12000 });
+}
+
+/* ─── MANIFESTACIONES (acordeón) ─────── */
+function toggleManif(hdr) {
+  const toggle = hdr.querySelector('.manif-toggle');
+  const body   = hdr.nextElementSibling;
+  const open   = body.classList.contains('open');
+  body.classList.toggle('open', !open);
+  toggle.classList.toggle('open', !open);
+  hdr.parentElement.style.borderColor = open ? 'var(--border)' : 'rgba(230,57,70,.4)';
+}
+
+/* ─── NIVEL BOTONES ─────────────────── */
+document.querySelectorAll('.nivel-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const nm = this.querySelector('input').name;
+    document.querySelectorAll('input[name="' + nm + '"]').forEach(x => x.closest('.nivel-btn').classList.remove('sel'));
+    this.classList.add('sel');
+    this.querySelector('input').checked = true;
+    actualizarSemaforo();
+  });
+});
+
+/* ─── SEMÁFORO RESUMEN ──────────────── */
+const MANIF_NAMES = ['Servicios Públicos', 'Indisciplina Ausente', 'Silencio ante Delitos', 'Autoridad Reconocida', 'Sicariato', 'Ocupación Ilegal', 'Desplazamiento', 'Sin Demanda Inst.'];
+const NIV_MAP = { 'niv1':'', 'niv2':'', 'niv3':'', 'niv4':'', 'niv5':'', 'niv6':'', 'niv7':'', 'niv8':'' };
+const NIV_COLOR = { '': '#555', 'No presente': 'var(--teal)', 'Leve': 'var(--gold)', 'Moderada': 'var(--accent)', 'Alta': '#8b0000' };
+const NIV_EMOJI = { '': '⬜', 'No presente': '🟢', 'Leve': '🟡', 'Moderada': '🟠', 'Alta': '🔴' };
+
+function actualizarSemaforo() {
+  for (let i = 1; i <= 8; i++) {
+    const sel = document.querySelector('input[name="niv' + i + '"]:checked');
+    NIV_MAP['niv' + i] = sel ? sel.closest('.nivel-btn').textContent.trim().split('\n')[0].trim().replace(/^[🟢🟡🟠🔴]\s*/, '') : '';
+  }
+  const grid = document.getElementById('semaforo-grid');
+  grid.innerHTML = MANIF_NAMES.map((nm, i) => {
+    const k = 'niv' + (i + 1);
+    const v = NIV_MAP[k] || '—';
+    const em = NIV_EMOJI[v] || '⬜';
+    return `<div style="padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);text-align:center;">
+      <div style="font-size:1.4em;margin-bottom:6px;">${em}</div>
+      <div style="font-size:.68em;font-weight:700;color:rgba(255,255,255,.4);text-transform:uppercase;margin-bottom:4px;">M${i+1}</div>
+      <div style="font-size:.72em;color:rgba(255,255,255,.65);margin-bottom:6px;line-height:1.3;">${nm}</div>
+      <div style="font-size:.75em;font-weight:700;color:${NIV_COLOR[v] || 'rgba(255,255,255,.3)'};">${v || 'Sin registrar'}</div>
+    </div>`;
+  }).join('');
+}
+actualizarSemaforo();
+
+/* ─── CHIPS ─────────────────────────── */
+document.querySelectorAll('.chip').forEach(ch => {
+  ch.addEventListener('click', function () {
+    this.classList.toggle('sel');
+    const cb = this.querySelector('input[type="checkbox"]');
+    if (cb) cb.checked = !cb.checked;
+  });
+});
+
+/* ─── OPT RADIO ─────────────────────── */
+document.querySelectorAll('.opt input[type="radio"]').forEach(r => {
+  r.addEventListener('change', function () {
+    document.querySelectorAll('input[name="' + this.name + '"]').forEach(x => x.closest('.opt').classList.remove('sel'));
+    this.closest('.opt').classList.add('sel');
+  });
+});
+
+/* ─── CHAR COUNTERS ─────────────────── */
+[['desc-sector','cc-ds',600],['m1','cc1',500],['m2','cc2',500],['m3','cc3',500],
+ ['m4','cc4',500],['m5','cc5',500],['m6','cc6',500],['m7','cc7',500],['m8','cc8',500],
+ ['perfil-grupo','cc-pg',600],['conclusion','cc-conc',900]].forEach(([id,ccId,mx]) => {
+  const ta = document.getElementById(id);
+  const ct = document.getElementById(ccId);
+  if (!ta||!ct) return;
+  ta.addEventListener('input', function () {
+    const l = this.value.length;
+    ct.textContent = l + '/' + mx;
+    ct.className = 'cc' + (l > mx * .9 ? ' w' : '') + (l >= mx ? ' o' : '');
+  });
+});
+
+/* ─── FOTOS ─────────────────────────── */
+function prevFotos(e) {
+  const p = document.getElementById('prev');
+  p.innerHTML = '';
+  Array.from(e.target.files).slice(0, 8).forEach(f => {
+    const r = new FileReader();
+    r.onload = ev => { const img = document.createElement('img'); img.src = ev.target.result; img.className = 'photo-thumb'; p.appendChild(img); };
+    r.readAsDataURL(f);
+  });
+}
+
+/* ═══════════════════════════════════════════════════════
+   INTEGRACIÓN GOOGLE SHEETS — VIRTUS GLOBAL PP8
+   Reemplaza la URL_DEL_SCRIPT con tu Web App URL desplegada
+═══════════════════════════════════════════════════════ */
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwtiPkYHLuM06lEF7Xa_3Z8siT8ecuNHEFdbiZPRRZzb9YaOKs7tophADkDDCpIgdSx/exec';
+
+/* ─── RECOLECTOR DE DATOS ─────────────── */
+function recolectarDatos() {
+  // Helper: radio por name
+  const radio = name => {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    if (!el) return '';
+    const btn = el.closest('.nivel-btn') || el.closest('.opt') || el.closest('label');
+    return btn ? btn.textContent.trim().replace(/\n.*/s,'').trim() : el.value;
+  };
+
+  // Helper: chips seleccionados en un contenedor
+  const chips = selector => Array.from(
+    document.querySelectorAll(selector + ' .chip.sel')
+  ).map(c => c.textContent.trim()).join(' | ');
+
+  // Helper: checkboxes seleccionados en un contenedor
+  const checks = selector => Array.from(
+    document.querySelectorAll(selector + ' .opt input[type="checkbox"]:checked')
+  ).map(c => c.closest('.opt').textContent.trim()).join(' | ');
+
+  // Helper: valor de nivel-btn
+  const nivel = name => {
+    const el = document.querySelector('input[name="' + name + '"]:checked');
+    if (!el) return '';
+    const btn = el.closest('.nivel-btn');
+    return btn ? btn.textContent.trim().split('\n')[0].replace(/^[🟢🟡🟠🔴]\s*/, '').trim() : '';
+  };
+
+  return {
+    // SECCIÓN 1 — Identificación
+    codigo:              document.getElementById('codigo')?.value || '',
+    fecha:               document.getElementById('fecha')?.value || '',
+    hora_inicio:         document.getElementById('hora')?.value || '',
+    localidad:           document.getElementById('localidad')?.value || '',
+    barrio:              document.getElementById('barrio')?.value || '',
+    zona_problema:       radio('zona-prob') ||
+                         document.querySelector('select[id="zona-select"]')?.value || '',
+    latitud:             document.getElementById('lat')?.value || '',
+    longitud:            document.getElementById('lng')?.value || '',
+    responsable:         document.getElementById('resp')?.value || '',
+    cargo:               document.getElementById('cargo')?.value || '',
+    tipo_levantamiento:  radio('tipo-lev'),
+
+    // SECCIÓN 2 — Contexto
+    desc_sector:         document.getElementById('desc-sector')?.value || '',
+    tipo_zona:           radio('zona'),
+    densidad:            radio('dens'),
+    tiempo_situacion:    radio('tiempo'),
+    intervenciones_previas: radio('interv'),
+    servicios_publicos:  chips('#s1 .chips') || chips('#s0 .chips'),
+
+    // SECCIÓN 3 — Manifestaciones
+    m1_nivel:            nivel('niv1'),
+    m1_servicios:        chips('.manif-card:nth-of-type(1) .chips'),
+    m1_descripcion:      document.getElementById('m1')?.value || '',
+    m1_fuente:           radio('f1'),
+
+    m2_nivel:            nivel('niv2'),
+    m2_descripcion:      document.getElementById('m2')?.value || '',
+
+    m3_nivel:            nivel('niv3'),
+    m3_ultima_denuncia:  radio('denu3'),
+    m3_descripcion:      document.getElementById('m3')?.value || '',
+
+    m4_nivel:            nivel('niv4'),
+    m4_ambitos:          chips('.manif-card:nth-of-type(4) .chips'),
+    m4_descripcion:      document.getElementById('m4')?.value || '',
+
+    m5_nivel:            nivel('niv5'),
+    m5_num_homicidios:   document.querySelector('input[name="niv5"]')?.closest('.manif-body')?.querySelector('input[type="number"]')?.value || '',
+    m5_fuente_dato:      radio('f5') || document.querySelector('select#m5-fuente')?.value || '',
+    m5_descripcion:      document.getElementById('m5')?.value || '',
+
+    m6_nivel:            nivel('niv6'),
+    m6_num_viviendas:    document.querySelector('input[name="niv6"]')?.closest('.manif-body')?.querySelector('input[type="number"]')?.value || '',
+    m6_tipo_ocupacion:   chips('.manif-card:nth-of-type(6) .chips'),
+    m6_descripcion:      document.getElementById('m6')?.value || '',
+
+    m7_nivel:            nivel('niv7'),
+    m7_estado_desp:      radio('desp7'),
+    m7_num_familias:     document.querySelector('input[name="niv7"]')?.closest('.manif-body')?.querySelector('input[type="number"]')?.value || '',
+    m7_descripcion:      document.getElementById('m7')?.value || '',
+
+    m8_nivel:            nivel('niv8'),
+    m8_servicios_nd:     chips('.manif-card:nth-of-type(8) .chips'),
+    m8_presencia_pol:    radio('pol8'),
+    m8_descripcion:      document.getElementById('m8')?.value || '',
+
+    // SECCIÓN 4 — Actores
+    tipo_estructura:     radio('tipo-grupo'),
+    actividades_ilegales: chips('#s3 .chips') || chips('.card-body .chips'),
+    tamano_estructura:   radio('tamano'),
+    perfil_grupo:        document.getElementById('perfil-grupo')?.value || '',
+    entidades_presentes: Array.from(document.querySelectorAll('#s3 .chip.sel')).map(c=>c.textContent.trim()).join(' | '),
+    cap_institucional:   radio('cap-inst'),
+    brechas_inst:        Array.from(document.querySelectorAll('input[name="cap-inst"]')).length > 0 ?
+                         Array.from(document.querySelectorAll('#s3 .chip.sel.c-r')).map(c=>c.textContent.trim()).join(' | ') : '',
+
+    // SECCIÓN 5 — Cierre
+    hora_fin:            document.getElementById('hora-fin')?.value || '',
+    num_personas:        document.querySelector('#s4 input[type="number"]')?.value || '',
+    conclusion:          document.getElementById('conclusion')?.value || '',
+    urgencia:            radio('urgencia'),
+    acciones:            checks('#s4'),
+    seguimiento:         radio('seguim'),
+    firma:               document.getElementById('firma')?.value || '',
+    timestamp_envio:     new Date().toISOString(),
+  };
+}
+
+/* ─── BORRADOR ──────────────────────── */
+function guardarBorrador() {
+  try {
+    const data = recolectarDatos();
+    localStorage.setItem('pp8_borrador', JSON.stringify(data));
+    mostrarToast('💾 Borrador guardado localmente.', 'ok');
+  } catch(e) {
+    mostrarToast('⚠ No se pudo guardar el borrador.', 'err');
+  }
+}
+
+/* ─── ENVÍO A GOOGLE SHEETS ─────────── */
+async function enviar() {
+  if (!validar(4)) return;
+
+  if (SCRIPT_URL === 'URL_DEL_SCRIPT_AQUI') {
+    mostrarToast('⚠ Configura primero la URL del Apps Script.', 'err');
+    return;
+  }
+
+  const cod       = document.getElementById('codigo').value || 'PP8-SIN-CODIGO';
+  const btnEnviar = document.querySelector('.btn-submit');
+  const btnText   = btnEnviar.textContent;
+
+  btnEnviar.textContent = '⏳ Enviando a Google Sheets...';
+  btnEnviar.disabled = true;
+
+  const data = recolectarDatos();
+
+  try {
+    const resp = await fetch(SCRIPT_URL, {
+      method:   'POST',
+      redirect: 'follow',
+      body:     new URLSearchParams({ payload: JSON.stringify(data) }),
+    });
+
+    if (resp.ok || resp.type === 'opaque') {
+      setTimeout(() => mostrarExito(cod), 1800);
+    } else {
+      throw new Error('Respuesta inesperada: ' + resp.status);
+    }
+  } catch(err) {
+    console.error('PP8 envio fallo:', err.message);
+    btnEnviar.textContent = btnText;
+    btnEnviar.disabled = false;
+    mostrarToast('❌ Error al enviar. Revisa la consola (F12) e intenta de nuevo.', 'err');
+  }
+}
+
+/* ─── PANTALLA DE ÉXITO ─────────────── */
+function mostrarExito(cod) {
+  document.getElementById('success-code').textContent = cod;
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('vis'));
+  document.getElementById('success').classList.add('vis');
+  document.getElementById('fill').style.width = '100%';
+  document.getElementById('pct').textContent = '100%';
+  document.querySelectorAll('.ps').forEach(s => s.classList.add('done'));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ─── TOAST DE ESTADO ───────────────── */
+function mostrarToast(msg, tipo) {
+  let t = document.getElementById('pp8-toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'pp8-toast';
+    t.style.cssText = `position:fixed;bottom:28px;left:50%;transform:translateX(-50%);
+      padding:12px 24px;border-radius:10px;font-family:Space Grotesk,sans-serif;
+      font-size:.9em;font-weight:600;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,.4);
+      transition:all .3s;max-width:90vw;text-align:center;`;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.background = tipo === 'ok' ? '#065f46' : tipo === 'err' ? '#7f1d1d' : '#1e3a5f';
+  t.style.color = '#fff';
+  t.style.opacity = '1';
+  setTimeout(() => { t.style.opacity = '0'; }, 3500);
+}
+
+function nuevaFicha() {
+  document.getElementById('success').classList.remove('vis');
+  cur = 0; goTo(0);
+  document.getElementById('prev').innerHTML = '';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ─── INIT ──────────────────────────── */
+updateProg(0);
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('fecha').value = today;
+generarCodigo();
+</script>
+</body>
+</html>
